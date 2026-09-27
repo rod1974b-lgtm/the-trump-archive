@@ -10,33 +10,129 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as FactChecksRouteImport } from './routes/fact-checks'
+import { Route as RecordRouteImport } from './routes/record'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as ApiPublicHooksDailyUpdateRouteImport } from './routes/api/public/hooks/daily-update'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FactChecksRoute = FactChecksRouteImport.update({
+  id: '/fact-checks',
+  path: '/fact-checks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecordRoute = RecordRouteImport.update({
+  id: '/record',
+  path: '/record',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHooksDailyUpdateRoute =
+  ApiPublicHooksDailyUpdateRouteImport.update({
+    id: '/api/public/hooks/daily-update',
+    path: '/api/public/hooks/daily-update',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/compare': typeof CompareRoute
+  '/fact-checks': typeof FactChecksRoute
+  '/record': typeof RecordRoute
+  '/saved': typeof SavedRoute
+  '/timeline': typeof TimelineRoute
+  '/api/public/hooks/daily-update': typeof ApiPublicHooksDailyUpdateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/compare': typeof CompareRoute
+  '/fact-checks': typeof FactChecksRoute
+  '/record': typeof RecordRoute
+  '/saved': typeof SavedRoute
+  '/timeline': typeof TimelineRoute
+  '/api/public/hooks/daily-update': typeof ApiPublicHooksDailyUpdateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/compare': typeof CompareRoute
+  '/fact-checks': typeof FactChecksRoute
+  '/record': typeof RecordRoute
+  '/saved': typeof SavedRoute
+  '/timeline': typeof TimelineRoute
+  '/api/public/hooks/daily-update': typeof ApiPublicHooksDailyUpdateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/compare'
+    | '/fact-checks'
+    | '/record'
+    | '/saved'
+    | '/timeline'
+    | '/api/public/hooks/daily-update'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/compare'
+    | '/fact-checks'
+    | '/record'
+    | '/saved'
+    | '/timeline'
+    | '/api/public/hooks/daily-update'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/compare'
+    | '/fact-checks'
+    | '/record'
+    | '/saved'
+    | '/timeline'
+    | '/api/public/hooks/daily-update'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CompareRoute: typeof CompareRoute
+  FactChecksRoute: typeof FactChecksRoute
+  RecordRoute: typeof RecordRoute
+  SavedRoute: typeof SavedRoute
+  TimelineRoute: typeof TimelineRoute
+  ApiPublicHooksDailyUpdateRoute: typeof ApiPublicHooksDailyUpdateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +144,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fact-checks': {
+      id: '/fact-checks'
+      path: '/fact-checks'
+      fullPath: '/fact-checks'
+      preLoaderRoute: typeof FactChecksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/record': {
+      id: '/record'
+      path: '/record'
+      fullPath: '/record'
+      preLoaderRoute: typeof RecordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/daily-update': {
+      id: '/api/public/hooks/daily-update'
+      path: '/api/public/hooks/daily-update'
+      fullPath: '/api/public/hooks/daily-update'
+      preLoaderRoute: typeof ApiPublicHooksDailyUpdateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CompareRoute: CompareRoute,
+  FactChecksRoute: FactChecksRoute,
+  RecordRoute: RecordRoute,
+  SavedRoute: SavedRoute,
+  TimelineRoute: TimelineRoute,
+  ApiPublicHooksDailyUpdateRoute: ApiPublicHooksDailyUpdateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
