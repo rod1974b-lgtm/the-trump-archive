@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
   loader: ({ context }) =>
     Promise.all([context.queryClient.ensureQueryData(entriesQuery()), context.queryClient.ensureQueryData(lastRunQuery)]),
   component: Home,
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
 

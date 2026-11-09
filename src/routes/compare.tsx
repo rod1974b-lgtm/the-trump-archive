@@ -18,7 +18,7 @@ export const Route = createFileRoute("/compare")({
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(entriesQuery()),
   component: Compare,
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
 

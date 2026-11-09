@@ -38,6 +38,6 @@ export const Route = createFileRoute("/fact-checks")({
       </div>
     );
   },
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
