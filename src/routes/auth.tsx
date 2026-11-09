@@ -14,6 +14,8 @@ export const Route = createFileRoute("/auth")({
       { name: "description", content: "Sign in to save entries on the Trump Record." },
       { property: "og:title", content: "Sign in — The Trump Record" },
       { property: "og:description", content: "Sign in to save entries on the Trump Record." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AuthPage,

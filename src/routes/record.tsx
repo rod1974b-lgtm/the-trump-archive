@@ -12,6 +12,8 @@ export const Route = createFileRoute("/record")({
       { name: "description", content: "Laws, policies and outcomes from both Trump terms — successes and failures, with sources." },
       { property: "og:title", content: "Accomplishments & Setbacks — The Trump Record" },
       { property: "og:description", content: "Successes and failures from both Trump terms, source-cited." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(q),

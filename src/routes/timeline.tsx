@@ -10,6 +10,8 @@ export const Route = createFileRoute("/timeline")({
       { name: "description", content: "Day-by-day timeline of both Trump terms with sources." },
       { property: "og:title", content: "Timeline — The Trump Record" },
       { property: "og:description", content: "Day-by-day timeline of both Trump terms with sources." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(entriesQuery()),

@@ -144,7 +144,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <footer className="mx-auto max-w-5xl border-t px-4 py-6 font-mono text-xs text-muted-foreground">
-          Every entry links to its sources. Entries marked "Auto" are drafted daily from news reports and may contain errors — check the sources.
+          Each entry links to its sources. Entries marked "Auto" are drafted from news reports and may contain errors — check the sources. Historical coverage remains expandable.
         </footer>
         <Toaster />
       </AuthProvider>
