@@ -11,6 +11,8 @@ export const Route = createFileRoute("/saved")({
       { name: "description", content: "Your saved entries from the Trump Record." },
       { property: "og:title", content: "Saved Entries — The Trump Record" },
       { property: "og:description", content: "Your saved entries from the Trump Record." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Saved,

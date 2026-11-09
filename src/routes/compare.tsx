@@ -12,11 +12,13 @@ export const Route = createFileRoute("/compare")({
       { name: "description", content: "Side-by-side comparison of Trump's first and second terms by topic." },
       { property: "og:title", content: "Term 1 vs Term 2 — The Trump Record" },
       { property: "og:description", content: "Side-by-side comparison of both Trump terms by topic." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(entriesQuery()),
   component: Compare,
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
 

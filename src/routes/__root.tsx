@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
+  lazyRouteComponent,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
@@ -29,12 +30,13 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
+  const capturedError = error instanceof Error ? error : new Error(String(error));
+  console.error(capturedError);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+    reportLovableError(capturedError, { boundary: "tanstack_root_error_component" });
+  }, [capturedError]);
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
       <div className="max-w-md text-center">
@@ -78,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: lazyRouteComponent(() => Promise.resolve({ default: ErrorComponent })),
 });
 
 function RootShell({ children }: { children: ReactNode }) {
@@ -144,7 +146,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <footer className="mx-auto max-w-5xl border-t px-4 py-6 font-mono text-xs text-muted-foreground">
-          Every entry links to its sources. Entries marked "Auto" are drafted daily from news reports and may contain errors — check the sources.
+          Each entry links to its sources. Entries marked "Auto" are drafted from news reports and may contain errors — check the sources. Historical coverage remains expandable.
         </footer>
         <Toaster />
       </AuthProvider>

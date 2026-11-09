@@ -11,12 +11,14 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "A neutral, source-cited record of Donald Trump's two terms: events, accomplishments, setbacks and fact-checked claims, updated daily." },
       { property: "og:title", content: "The Trump Record — Both Terms, Source-Cited" },
       { property: "og:description", content: "Events, accomplishments, setbacks and fact-checks across both Trump terms, updated daily." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) =>
     Promise.all([context.queryClient.ensureQueryData(entriesQuery()), context.queryClient.ensureQueryData(lastRunQuery)]),
   component: Home,
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
 
@@ -35,10 +37,10 @@ function Home() {
     <div>
       <section className="grid gap-6 border-b pb-8 md:grid-cols-[2fr_1fr]">
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">2017–2021 · 2025–present</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Term 1 · Jan 20, 2017–Jan 20, 2021 &nbsp;|&nbsp; Term 2 · Jan 20, 2025–present</p>
           <h1 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">Everything on the record — the good, the bad, and what was said.</h1>
           <p className="mt-4 max-w-xl text-muted-foreground">
-            The first term is the finished baseline. The second term grows every day as new events are pulled from news reports. Every entry links to its sources.
+            The first term is an expandable historical baseline, not a finished list. Term 2 begins January 20, 2025; daily news entries are source-linked, and newly verified history can be added to either term.
           </p>
         </div>
         <div className="self-end font-mono text-xs text-muted-foreground">

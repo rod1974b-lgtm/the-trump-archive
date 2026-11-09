@@ -2,7 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
 export type Kind = "event" | "accomplishment" | "setback" | "claim";
-export type Rating = "true" | "mostly_true" | "mixed" | "mostly_false" | "false" | "unproven";
+export type Rating = "true" | "mostly_true" | "mixed" | "mostly_false" | "false" | "unproven" | "misleading" | "half_truth";
 export type Entry = {
   id: string;
   kind: Kind;
@@ -43,6 +43,8 @@ export const RATING_LABEL: Record<Rating, string> = {
   mostly_false: "Mostly false",
   false: "False",
   unproven: "Unproven",
+  misleading: "Misleading",
+  half_truth: "Half-truth",
 };
 
 export const KIND_LABEL: Record<Kind, string> = {

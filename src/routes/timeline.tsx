@@ -10,6 +10,8 @@ export const Route = createFileRoute("/timeline")({
       { name: "description", content: "Day-by-day timeline of both Trump terms with sources." },
       { property: "og:title", content: "Timeline — The Trump Record" },
       { property: "og:description", content: "Day-by-day timeline of both Trump terms with sources." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(entriesQuery()),
@@ -22,6 +24,6 @@ export const Route = createFileRoute("/timeline")({
       </div>
     );
   },
-  errorComponent: ({ error }) => <p role="alert">{error.message}</p>,
+  errorComponent: ({ error }) => <p role="alert">{error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found.</p>,
 });
