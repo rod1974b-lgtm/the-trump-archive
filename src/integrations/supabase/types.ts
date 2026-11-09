@@ -124,6 +124,8 @@ export type Database = {
         | "mostly_false"
         | "false"
         | "unproven"
+        | "misleading"
+        | "half_truth"
       entry_kind: "event" | "accomplishment" | "setback" | "claim"
     }
     CompositeTypes: {
@@ -259,6 +261,8 @@ export const Constants = {
         "mostly_false",
         "false",
         "unproven",
+        "misleading",
+        "half_truth",
       ],
       entry_kind: ["event", "accomplishment", "setback", "claim"],
     },
